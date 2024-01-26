@@ -1,11 +1,10 @@
 import { Client, CommandInteraction, Interaction } from "discord.js";
-import { commands } from "../commands/commands";
+import { commands } from "../commands";
 
 
 export default (client : Client) : void => {
     client.on("interactionCreate", async (interaction : Interaction ) => {
         
-        console.log(interaction.isCommand());
         if(interaction.isCommand()){
             await handleSlashCommand(client, interaction);
             return;
