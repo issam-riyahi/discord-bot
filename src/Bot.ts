@@ -1,13 +1,16 @@
+import { Message } from "discord.js";
 import interactionCreate from "./listeners/interactionCreate";
 import ready from "./listeners/ready";
 
 require('dotenv').config();
-const { Client, Events, GatewayIntentBits } = require('discord.js');
+import { Client, Events, GatewayIntentBits } from 'discord.js';
+import { loadCommandes } from "./utils/loader";
 
 
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages] });
 
+loadCommandes();
 
 ready(client);
 interactionCreate(client);
