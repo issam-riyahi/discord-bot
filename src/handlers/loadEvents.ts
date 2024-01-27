@@ -8,11 +8,10 @@ const guildEvent = (event: string) => require(`../events/guild/${event}`);
 
 
 function laodEvents(client: Client) {
-  console.log(require('../events/client/ready'));
 
   client.on("ready", (client: Client) => clientEvent("ready")(client));
 
-  client.on("interactionCreate", (interaction: Interaction) => guildEvent("interactionCreate")(interaction));
+  client.on<string>("interactionCreate", (interaction: Interaction, client : Client) => guildEvent("interactionCreate")(interaction, client));
 }
 
 export default laodEvents;

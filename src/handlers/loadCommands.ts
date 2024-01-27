@@ -3,14 +3,16 @@ import { readdirSync } from "fs";
 import path from "path";
 
 
-async function loadCommandes (client : Client) {
+function loadCommandes (client : Client) {
     const foldersPath = path.join(__dirname, '../commands');
     const commandFolder = readdirSync(foldersPath);
     
     for(const file of commandFolder) {
         const command = require(`../commands/${file}`) ;
+        console.log(command);
         if(command.name) {
-            client.commands.set(command.name, command)
+            client.commands.set(command.name, command);
+            console.log("Command : " ,client.commands)
         }
     }
 }

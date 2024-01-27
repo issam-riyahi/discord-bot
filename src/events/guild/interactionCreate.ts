@@ -1,7 +1,12 @@
-import { Client, CommandInteraction, Interaction } from "discord.js";
-import { commands } from "../../commands";
+import { Client, CommandInteraction, Interaction, InteractionCollector, InteractionType } from "discord.js";
 
 
-module.exports = (interaction : Interaction) =>  {
-    console.log(interaction);
+module.exports = (interaction : Interaction, client : Client) =>  {
+    if(interaction.type !== InteractionType.ApplicationCommand) return ;
+
+    const command = client.slashCommands.get(interaction.commandName);
+
+    if(!command) {
+        interaction.reply({ content: 'an Erorr' })
+    }
 }

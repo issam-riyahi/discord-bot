@@ -4,7 +4,7 @@ import { CommandInteraction, Client } from "discord.js";
 import { Command } from "../types/command";
 
 
- const Hello : Command = {
+module.exports = {
     name: "hello",
     description: "Returns a greeting",
     type : 1,
@@ -18,4 +18,3 @@ import { Command } from "../types/command";
     }
 };
 
-export default Hello;

@@ -8,14 +8,22 @@ import laodEvents from "./handlers/loadEvents";
 
 
 
-const client = new Client({ 
-    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages] 
+const client = new Client({
+    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages]
 });
 
 
+client.commands = new Collection()
+client.slashCommands = new Collection()
+
+console.log(client.commands)
+console.log(client.slashCommands)
 
 laodEvents(client);
-loadCommandes(client);
+loadCommandes(client)
+
+console.log(client.commands)
+
 
 
 
