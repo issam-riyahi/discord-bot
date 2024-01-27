@@ -1,10 +1,9 @@
 require('dotenv').config();
-import interactionCreate from "./listeners/interactionCreate";
-import ready from "./listeners/ready";
 
-import { Client, Events, GatewayIntentBits } from 'discord.js';
+import loadCommandes from "./handlers/loadCommands";
+import { Client, Collection, GatewayIntentBits } from "discord.js";
+import laodEvents from "./handlers/loadEvents";
 
-import { setupCommand } from "./commands";
 
 
 
@@ -12,6 +11,11 @@ import { setupCommand } from "./commands";
 const client = new Client({ 
     intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages] 
 });
+
+
+
+laodEvents(client);
+loadCommandes(client);
 
 
 
