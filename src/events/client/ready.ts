@@ -1,7 +1,8 @@
 import { Client } from "discord.js";
+import logger from "../../utils/logger";
 
 module.exports =  (client: Client) : void => {
 
-    console.log(`${client.user?.username} is online`);
+    logger.info("Bot is Online");
 
 };

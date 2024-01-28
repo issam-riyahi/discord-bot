@@ -1,4 +1,4 @@
-import { Client, Interaction } from "discord.js";
+import { Client, Events, Interaction } from "discord.js";
 
 
 const clientEvent = (event: string) => require(`../events/client/${event}`);
@@ -11,7 +11,8 @@ function laodEvents(client: Client) {
 
   client.on("ready", (client: Client) => clientEvent("ready")(client));
 
-  client.on<string>("interactionCreate", (interaction: Interaction, client : Client) => guildEvent("interactionCreate")(interaction, client));
+  client.on("interactionCreate", (interaction: Interaction) => guildEvent("interactionCreate")(interaction, client));
+  client.on(Events.MessageCreate, (message) => guildEvent(Events.MessageCreate)(message));
 }
 
 export default laodEvents;

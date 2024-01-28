@@ -8,11 +8,9 @@ function loadCommandes (client : Client) {
     const commandFolder = readdirSync(foldersPath);
     
     for(const file of commandFolder) {
-        const command = require(`../commands/${file}`) ;
-        console.log(command);
+        const command = require(`../commands/${file}`);
         if(command.name) {
             client.commands.set(command.name, command);
-            console.log("Command : " ,client.commands)
         }
     }
 }

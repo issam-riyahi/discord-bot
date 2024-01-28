@@ -4,9 +4,13 @@ import { Client, CommandInteraction, Interaction, InteractionCollector, Interact
 module.exports = (interaction : Interaction, client : Client) =>  {
     if(interaction.type !== InteractionType.ApplicationCommand) return ;
 
+    
+
     const command = client.slashCommands.get(interaction.commandName);
 
     if(!command) {
-        interaction.reply({ content: 'an Erorr' })
+        interaction.reply({ content: 'Command not found' })
     }
+
+    command?.run(client, interaction);
 }
