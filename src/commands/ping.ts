@@ -2,7 +2,7 @@
 
 
 
-import { CommandInteraction, Client } from "discord.js";
+import { CommandInteraction, Client, Message } from "discord.js";
 
 
 
@@ -10,13 +10,10 @@ module.exports = {
     name: "ping",
     description: "Returns a greeting",
     type : 1,
-    run: async (client: Client, interaction: CommandInteraction) => {
+    run: async (message : Message) => {
         const content = "pong!";
 
-        await interaction.followUp({
-            ephemeral: true,
-            content
-        });
+        await message.channel.send(content);
     }
 };
 

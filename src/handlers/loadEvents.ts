@@ -12,7 +12,7 @@ function laodEvents(client: Client) {
   client.on("ready", (client: Client) => clientEvent("ready")(client));
 
   client.on("interactionCreate", (interaction: Interaction) => guildEvent("interactionCreate")(interaction, client));
-  client.on(Events.MessageCreate, (message) => guildEvent(Events.MessageCreate)(message));
+  client.on(Events.MessageCreate, (message) => guildEvent("commands")(message));
 }
 
 export default laodEvents;
