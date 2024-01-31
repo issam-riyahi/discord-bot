@@ -1,7 +1,7 @@
 
 
 
-import { Client, CommandInteraction, Interaction, InteractionCollector, InteractionType, Message } from "discord.js";
+import { Client, Message } from "discord.js";
 import { botConfig } from "../../config/discord";
 
 
@@ -21,6 +21,7 @@ module.exports = (message : Message, client: Client ) =>  {
 
     if(!command) return 
 
-    client.commands.get(command)?.run(message);
+    
+    client.commands.get(command)?.run(message, client);
 
 }

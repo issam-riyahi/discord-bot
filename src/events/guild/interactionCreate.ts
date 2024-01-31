@@ -11,6 +11,6 @@ module.exports = (interaction : Interaction, client : Client) =>  {
     if(!command) {
         interaction.reply({ content: 'Command not found' })
     }
-
+    console.log(interaction.channel)
     command?.run(client, interaction);
 }

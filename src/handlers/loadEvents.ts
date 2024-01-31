@@ -9,10 +9,10 @@ const guildEvent = (event: string) => require(`../events/guild/${event}`);
 
 function laodEvents(client: Client) {
 
-  client.on("ready", (client: Client) => clientEvent("ready")(client));
+  client.on(Events.ClientReady, (client: Client) => clientEvent("ready")(client));
 
-  client.on("interactionCreate", (interaction: Interaction) => guildEvent("interactionCreate")(interaction, client));
-  client.on(Events.MessageCreate, (message) => guildEvent("commands")(message));
+  client.on(Events.InteractionCreate, (interaction: Interaction) => guildEvent("interactionCreate")(interaction, client));
+  client.on(Events.MessageCreate, (message) => guildEvent("commands")(message, client));
 }
 
 export default laodEvents;
